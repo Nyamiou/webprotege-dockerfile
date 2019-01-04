@@ -8,15 +8,15 @@ services:
     ports:
       - "8888:8080"
     environment:
-      - "webprotege.mongodb.uri=mongodb://tom:jerry@mongodb:27017/admin"
+      webprotege.mongodb.uri: mongodb://tom:jerry@mongodb:27017
     volumes:
       - webprotege_data:/data/webprotege
 
   mongodb:
     image: mongo:3
     environment:
-      - "MONGO_INITDB_ROOT_USERNAME=tom"
-      - "MONGO_INITDB_ROOT_PASSWORD=jerry"
+      MONGO_INITDB_ROOT_USERNAME: tom
+      MONGO_INITDB_ROOT_PASSWORD: jerry
     volumes:
       - mongodb_data:/data/db
 
