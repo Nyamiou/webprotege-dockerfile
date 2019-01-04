@@ -2,16 +2,21 @@ version: '2'
 
 services:
   webprotege:
-    image: skyplabs/webprotege
+    image: galeanthrope/webprotege
     depends_on:
       - mongodb
     ports:
       - "8888:8080"
+    environment:
+      - "webprotege.mongodb.uri=mongodb://tom:jerry@mongodb:27017/admin"
     volumes:
       - webprotege_data:/data/webprotege
 
   mongodb:
     image: mongo:3
+    environment:
+      - "MONGO_INITDB_ROOT_USERNAME=tom"
+      - "MONGO_INITDB_ROOT_PASSWORD=jerry"
     volumes:
       - mongodb_data:/data/db
 
